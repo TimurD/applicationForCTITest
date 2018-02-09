@@ -1,4 +1,5 @@
-package com.example.domain;
+/*
+package com.mock_cti.domain;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -61,3 +62,4 @@ public class Shipment implements Serializable {
         this.date = date;
     }
 }
+*/

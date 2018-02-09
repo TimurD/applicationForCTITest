@@ -1,4 +1,5 @@
-package com.example.domain;
+/*
+package com.mock_cti.domain;
 
 import javax.xml.bind.annotation.*;
 import java.io.Serializable;
@@ -34,3 +35,4 @@ public class Test implements Serializable{
                 '}';
     }
 }
+*/
