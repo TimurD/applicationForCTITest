@@ -4,11 +4,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.mock_cti</groupId>
-	<artifactId>mock_cti</artifactId>
+	<artifactId>mock-CTI-service</artifactId>
 	<packaging>jar</packaging>
-	<version>1.0-SNAPSHOT</version>
+	<version>0.0.1-SNAPSHOT</version>
 
-	<name>mock-cti</name>
+	<name>mock-CTI-service</name>
 	<description>Project for mock CTI</description>
 
 	<parent>

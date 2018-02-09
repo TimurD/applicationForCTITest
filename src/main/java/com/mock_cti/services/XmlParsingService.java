@@ -11,7 +11,7 @@ import java.util.LinkedHashMap;
 @Service
 public class XmlParsingService {
 	private final Logger LOGGER = LogManager.getLogger(XmlParsingService.class);
-	private static LinkedHashMap<String, Integer> errorMap = new LinkedHashMap<>();
+	private static LinkedHashMap<String, String> errorMap = new LinkedHashMap<>();
 
 	static {
 		String WRONG_MESSAGE_204 = "INVALID TOKEN:NO_CONTENT_STATUS_204";
@@ -21,12 +21,12 @@ public class XmlParsingService {
 		String WRONG_MESSAGE_423 = "DATA ERROR:STATUS_423";
 		String WRONG_MESSAGE_500 = "UNEXPECTED ERROR:INTERNAL_SERVER_ERROR_STATUS_500";
 
-		errorMap.put(WRONG_MESSAGE_204, 204);
-		errorMap.put(WRONG_MESSAGE_420, 420);
-		errorMap.put(WRONG_MESSAGE_421, 421);
-		errorMap.put(WRONG_MESSAGE_422, 422);
-		errorMap.put(WRONG_MESSAGE_423, 423);
-		errorMap.put(WRONG_MESSAGE_500, 500);
+		errorMap.put(WRONG_MESSAGE_204, "204\tUnauthorized, Invalid token");
+		errorMap.put(WRONG_MESSAGE_420, "420\tInvalid Sender (Tenant name)");
+		errorMap.put(WRONG_MESSAGE_421, "421\tThe requested module wasn’t found.");
+		errorMap.put(WRONG_MESSAGE_422, "422\tInvalid structure.");
+		errorMap.put(WRONG_MESSAGE_423, "423\tRequest partially processed (Data Error). ");
+		errorMap.put(WRONG_MESSAGE_500, "500\tOther unexpected error occurred.");
 	}
 
 	public ResponseEntity parseXml(final String xml) {
@@ -34,7 +34,7 @@ public class XmlParsingService {
 		return errorMap.entrySet().stream()
 				.filter(errorEntry -> isContainsError(xml, errorEntry.getKey()))
 				.findFirst()
-				.map(errorEntry -> ResponseEntity.status(errorEntry.getValue()).body(null))
+				.map(errorEntry -> ResponseEntity.status(Integer.valueOf(errorEntry.getValue().split("\\t")[0])).body(errorEntry.getValue().split("\\t")[1]))
 				.orElse(new ResponseEntity(HttpStatus.OK));
 	}
 
