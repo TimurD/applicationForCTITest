@@ -5,6 +5,7 @@ import com.mock_cti.services.XmlParsingService;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,9 +26,16 @@ public class MainController {
 	XmlParsingService xmlParsingService;
 
 	@PostMapping
-	public ResponseEntity printxmlToLog(@RequestHeader("Tenant-Ref") String module,
+	public ResponseEntity printxmlToLog(@RequestHeader HttpHeaders headers,
 										@RequestBody String xmlBody) throws Exception {
-		LOGGER.info("Application: have got new post request with body: " + xmlBody);
+
+		StringBuilder builder = new StringBuilder("Request headers:\n");
+		headers.keySet().forEach(it ->
+				builder.append("\t" + it.toString() + ":" + headers.get(it).toString() + "\n")
+		);
+		LOGGER.info(builder.toString());
+
+		LOGGER.info("Request body:\n" + xmlBody);
 
 		return xmlParsingService.parseXml(xmlBody);
 	}
