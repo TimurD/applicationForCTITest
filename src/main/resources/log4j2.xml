@@ -19,7 +19,7 @@
     </appender>
 
     <Loggers>
-        <AsyncLogger name="com.mock_cti" level="INFO"/>
+        <AsyncLogger name="com.mock_cti" level="DEBUG"/>
 
         <AsyncRoot level="ALL">
             <AppenderRef ref="console" />
