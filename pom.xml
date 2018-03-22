@@ -3,13 +3,13 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.mock_cti</groupId>
-	<artifactId>mock-CTI-service</artifactId>
+	<groupId>com.mock_rest_service</groupId>
+	<artifactId>mock_rest_service</artifactId>
 	<packaging>jar</packaging>
 	<version>0.0.1-SNAPSHOT</version>
 
-	<name>mock-CTI-service</name>
-	<description>Project for mock CTI</description>
+	<name>mock_rest_service</name>
+	<description>Project for mock rest service</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>

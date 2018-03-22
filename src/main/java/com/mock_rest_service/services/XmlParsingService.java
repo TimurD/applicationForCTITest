@@ -1,4 +1,4 @@
-package com.mock_cti.services;
+package com.mock_rest_service.services;
 
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
